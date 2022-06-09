@@ -1,0 +1,413 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-image: url("../src/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.bg-primary {
+  background-color: #faf4b7 !important;
+}
+
+.row {
+  margin-top: unset !important;
+  padding-right: unset !important;
+  padding-left: unset !important;
+  margin-top: unset !important;
+}
+
+.row > * {
+  margin-top: unset !important;
+}
+
+input {
+  width: 100%;
+}
+
+.border-bottom {
+  border-bottom: unset !important;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}
+
+.google-maps {
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overflow: hidden;
+}
+.google-maps iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.bg-facebook {
+  background-color: #3b5998;
+}
+.bg-twitter {
+  background-color: #1da1f2;
+}
+.bg-google {
+  background-color: #ea4335;
+}
+.bg-instagram {
+  background-color: #e1306c;
+}
+
+.bs-cover {
+  background-size: cover;
+}
+
+.r-0 {
+  right: 0;
+}
+.mw-180 {
+  max-width: 180px;
+}
+.mw-140 {
+  max-width: 140px;
+}
+.i-va {
+  vertical-align: -0.125em;
+}
+
+/* PRE LOADER */
+
+/* .mul8 {
+  height: 50px;
+  width: 50px;
+}
+
+.mul8circ1 {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 5px solid #76cbad;
+  border-bottom-color: rgba(0, 0, 0, 0);
+  border-top-color: rgba(0, 0, 0, 0);
+  -webkit-animation: mul8circ1Anim 2s infinite linear;
+  animation: mul8circ1Anim 2s infinite linear;
+  position: absolute;
+}
+
+.mul8circ2 {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 5px solid #127961;
+  border-bottom-color: rgba(0, 0, 0, 0);
+  border-top-color: rgba(0, 0, 0, 0);
+  -webkit-animation: mul8circ2Anim 2.5s infinite linear;
+  animation: mul8circ2Anim 2.5s infinite linear;
+  position: absolute;
+}
+
+@-webkit-keyframes mul8circ1Anim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mul8circ1Anim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes mul8circ2Anim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mul8circ2Anim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+} */
+
+/* HEADER */
+
+/* .topbar {
+  background-color: #f9f9f9;
+} */
+
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+  display: none;
+}
+
+.top_bar {
+  color: rgb(0, 0, 0);
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0px !important;
+}
+
+.navbar {
+  background-color: #f9f9f9 !important;
+  /* border-top-left-radius: 20px;
+  border-top-right-radius: 20px; */
+  /* border-top: 3px solid #d3222a;
+  border-left: 3px solid #d3222a;
+  border-right: 3px solid #d3222a; */
+  border-top: 3px solid #000000;
+  border-left: 3px solid #000000;
+  border-right: 3px solid #000000;
+
+  border-bottom: 3px solid #000000;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  justify-content: center;
+}
+
+.carousel_background {
+  width: 100%;
+  height: 400px;
+}
+.banner {
+  background: url("books.jpg") center / cover no-repeat;
+}
+
+.banner_inner {
+  width: 70%;
+  margin-left: 15%;
+  padding: 70px;
+}
+
+.banner_text {
+  margin-top: 20%;
+  margin-bottom: 8%;
+  font-size: 30px;
+}
+
+.banner_book_img {
+  width: 150px;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #d3222a;
+  border-color: #ffffff;
+}
+
+.buy_now {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  font-size: 20px;
+  background-color: #d3222a;
+  border-radius: 50px;
+  padding: 3px 30px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(0, 0, 0);
+  font-size: 13px;
+  font-weight: 700;
+  margin: 15px 10px;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #ffeeee !important;
+  color: black;
+  font-weight: 600;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.footer-logo {
+  height: 150px;
+}
+
+.footer_logo_img {
+  position: relative;
+  top: 50%;
+}
+
+.list-group-item {
+  background-color: unset;
+  padding: 1px;
+  border: 0px;
+}
+
+/* CATALOGUE SECTION */
+
+.download_icon {
+  color: #f1c37c;
+}
+
+.download_icon_text {
+  width: 100px;
+}
+
+/* .catalogue {
+  margin-left: 15%;
+} */
+
+.catalogue_right {
+  background-color: #ffffff;
+  border: 3px solid #ffffff;
+  color: black;
+}
+
+.catalogue_left {
+  background-color: #ffffff;
+  border: 3px solid #ffffff;
+  color: black;
+}
+
+.catalogue_text {
+  margin-top: 3% !important;
+}
+
+/* FEATURED SECTION */
+
+.star_icon {
+  color: #d3222a !important;
+}
+
+.featured_section {
+  background-color: #ebd8c3;
+  /* width: 100%; */
+}
+
+.featured_row {
+  width: 90%;
+  text-align: left !important;
+  margin-left: 3%;
+}
+
+.featured_card {
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+  margin-left: 10%;
+  background: rgb(253, 237, 207);
+  background: linear-gradient(
+    90deg,
+    rgba(253, 237, 207, 0) 0%,
+    #fff6ea 35%,
+    #fff6ea 78%,
+    #fff6ea 100%
+  );
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  margin-bottom: 50px !important;
+  text-align: center;
+}
+
+.featured_card:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.featured_book_detail {
+  margin-top: 20px;
+}
+
+.add_to_cart {
+  border-radius: 50px;
+  padding: 5px 15px;
+  border: 1px solid #d3222a !important;
+  background: rgb(253, 237, 207);
+}
+
+/* LATEST SECTION */
+
+.latest_dropdown_section {
+  text-align: right;
+}
+
+.categories_dropdown {
+  background-color: #faf4e5;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.latest_section {
+  width: 100%;
+  background-color: #ffeeee;
+}
+
+.latest_section_book_col {
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+}
+/* 
+.latest_section_book_col:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+} */
+
+.latest_section_book_row {
+  width: 95%;
+  margin-left: 4%;
+}
+
+.latest_section_book_col > img {
+}
+
+.product_add_to_cart {
+  background-color: #faf4e5;
+  border-radius: 10px;
+  margin-top: 5px;
+  border: 2px solid #faf4b7 !important;
+  font-size: 13px;
+  padding: 5px 10px;
+}
+
+.price {
+  color: #d3222a;
+}
+
+/* BEST SELLERS */
+
+.best_sellers {
+  background-color: #ebd8c3;
+  width: 100%;
+}
+
+/* SHOPPING CART */
+
+/* SHOP PAGE */
