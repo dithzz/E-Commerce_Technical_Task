@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "animate.css";
-import { addToCart } from "../../redux/actions/cartActions";
+import { addToCart, getCart } from "../../redux/actions/cartActions";
 import { SERVER_BASE_URL } from "../../config/config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "../Header";
 
 const FeaturedCard = (props) => {
   const dispatch = useDispatch();
@@ -25,8 +26,6 @@ const FeaturedCard = (props) => {
       headers: { Authorization: `Bearer ${authTokens?.access?.token}` },
     };
 
-    setCartClick("Added");
-    setAddedCart(true);
     const response = axios
       .post(
         `${SERVER_BASE_URL}/v1/app/add-to-cart`,
@@ -51,7 +50,8 @@ const FeaturedCard = (props) => {
         console.log("Err", err);
       });
     setCart(response.data);
-    dispatch(addToCart(response.data));
+    setCartClick("Added");
+    setAddedCart(true);
   };
 
   useEffect(() => {
@@ -61,6 +61,9 @@ const FeaturedCard = (props) => {
     ) {
       setCartClick("In Cart");
       setAddedCart(true);
+    } else {
+      setCartClick("Add To Cart");
+      setAddedCart(false);
     }
   }, [cart, inCart]);
 
@@ -104,6 +107,17 @@ const FeaturedCard = (props) => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

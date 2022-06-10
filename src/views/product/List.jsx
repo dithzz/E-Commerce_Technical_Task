@@ -47,7 +47,7 @@ const ProductListView = () => {
 
   const getAllProducts = async () => {
     const response = await axios
-      .get(`${SERVER_BASE_URL}/v1/app/shirts`)
+      .get(`${SERVER_BASE_URL}/v1/app/books`)
       .catch((err) => {
         console.log("Err", err);
       });

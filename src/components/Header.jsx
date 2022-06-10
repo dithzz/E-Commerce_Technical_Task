@@ -11,7 +11,7 @@ import { logoutUser } from "../redux/actions/authActions";
 import { SERVER_BASE_URL } from "../config/config";
 import { getCart } from "../redux/actions/cartActions";
 
-const Header = () => {
+const Header = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -74,7 +74,7 @@ const Header = () => {
                 <Link to="/cart" className="btn btn-primary">
                   <IconCart3 className="i-va" />
                   <div className="position-absolute top-0 left-100 translate-middle badge bg-dark rounded-circle">
-                    {cartItems?.items?.length}
+                    {/* {cartItems?.items?.length} */}
                   </div>
                 </Link>
               </div>

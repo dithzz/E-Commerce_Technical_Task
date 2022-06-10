@@ -9,14 +9,40 @@ import { ReactComponent as IconChevronLeft } from "bootstrap-icons/icons/chevron
 import { ReactComponent as IconTruck } from "bootstrap-icons/icons/truck.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { SERVER_BASE_URL } from "../../config/config";
+import { getCart } from "../../redux/actions/cartActions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const CartView = () => {
+const CartView = (props) => {
+  const dispatch = useDispatch();
   const [stock, setStock] = useState(0);
   const [wishlist, setWishlist] = useState(false);
   const [cartCount, setCartCount] = useState();
+  const [cartItemClear, setCartItemClear] = useState(false);
   const [total, setTotal] = useState(0);
 
   const cart = useSelector((state) => state?.getCart?.cart);
+  const authTokens = useSelector((state) => state?.userLogin?.user?.tokens);
+
+  useEffect(() => {
+    if (authTokens) {
+      setCartItemClear(false);
+      (async () => {
+        dispatch(getCart(authTokens.access.token));
+      })();
+    } else {
+      toast.error("Login/ Register to access cart!", {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }, [authTokens, cartItemClear]);
 
   useEffect(() => {
     console.log(cart);
@@ -68,12 +94,65 @@ const CartView = () => {
   };
 
   const handleRemoveItem = (id) => {
-    const count = {
-      ...cartCount,
-    };
-    delete count[id];
-    setCartCount(count);
+    axios
+      .post(
+        `${SERVER_BASE_URL}/v1/app/remove-from-cart`,
+        { item: id },
+        {
+          headers: { Authorization: `Bearer ${authTokens?.access?.token}` },
+        }
+      )
+      .then((res) => {
+        setCartItemClear(true);
+      });
+    // const count = {
+    //   ...cartCount,
+    // };
+    // delete count[id];
+    // setCartCount(count);
   };
+
+  const onMakePurchase = (item) => {
+    const data = Object.keys(item).map((d) => {
+      return { item: d, count: item[d].count };
+    });
+    console.log(data);
+    axios
+      .post(
+        `${SERVER_BASE_URL}/v1/app/checkout-cart`,
+        {
+          items: data,
+          totalAmount: total.toFixed(2),
+          books: Object.keys(item),
+        },
+        {
+          headers: { Authorization: `Bearer ${authTokens?.access?.token}` },
+        }
+      )
+      .then((res) => {
+        toast.success("Purchase Made!", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      })
+      .err((err) => {
+        toast.error("Purchase Not Successful!", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  };
+
   return (
     <React.Fragment>
       <div className="shopping_cart_breadcrumb bg-secondary border-top p-4 text-white mb-3">
@@ -182,9 +261,12 @@ const CartView = () => {
                 </table>
               </div>
               <div className="card-footer">
-                <Link to="/checkout" className="btn btn-primary float-right">
+                <button
+                  onClick={() => onMakePurchase(cartCount)}
+                  className="btn btn-primary float-right"
+                >
                   Make Purchase <IconChevronRight className="i-va" />
-                </Link>
+                </button>
                 <Link to="/" className="btn btn-secondary">
                   <IconChevronLeft className="i-va" /> Continue shopping
                 </Link>
@@ -206,6 +288,17 @@ const CartView = () => {
             </div>
           </div>
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </React.Fragment>
   );
